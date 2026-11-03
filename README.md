@@ -18,7 +18,7 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
 - Empty, fractional, out-of-range, and repeated guesses do not use attempts.
 - A wrong guess tells you whether to try a higher or lower number.
 - A correct guess wins, including on the final attempt.
-- Using all attempts without a correct guess ends the round and reveal the number.
+- Using all attempts without a correct guess ends the round and reveals the number.
 - Input and submission are disabled after a win or loss.
 - **New game** resets the round and chooses a fresh random number. The same number may occur again by chance.
 
