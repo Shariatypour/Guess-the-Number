@@ -22,6 +22,12 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
 - Input and submission are disabled after a win or loss.
 - **New game** resets the round and chooses a fresh random number. The same number may occur again by chance.
 
+## Personal bests
+
+The fewest accepted guesses in a winning round is saved separately for each difficulty. A loss, tie, or slower win does not replace a better record. New game and difficulty changes keep records.
+
+Records use `localStorage` on this browser and site origin; they are not synced across devices. Clearing site data removes them. If storage is blocked, the game continues and keeps records only for the current visit. Stored values are validated before use.
+
 ## Run locally
 
 1. Download the repository through **Code → Download ZIP** and extract it, or clone it:
@@ -68,7 +74,7 @@ Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
 
 Input validation runs **before** adding a guess or reducing attempts. The win check runs **before** the zero-attempt check so a correct final guess still wins. `updateDisplay()` keeps the controls and visible state synchronized; `newGame()` restores the initial state.
 
-All game state exists in the browser. Refreshing the page starts a new round; no progress is saved or submitted to a server. This is a learning game, not a tamper-resistant competition.
+All game state exists in the browser. Refreshing the page starts a new round; round progress is not saved or submitted to a server. Personal bests are saved locally in the browser. This is a learning game, not a tamper-resistant competition.
 
 ## Project structure
 

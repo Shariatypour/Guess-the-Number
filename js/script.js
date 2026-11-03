@@ -13,6 +13,44 @@ const levels = {
     medium: { label: 'Medium', maximum: 50, attempts: 6 },
     hard: { label: 'Hard', maximum: 100, attempts: 7 }
 };
+const bestScore = document.querySelector('#best-score');
+const storageNote = document.querySelector('#storage-note');
+const storageKey = 'guess-the-number.best-scores.v1';
+let storageAvailable = true;
+
+function loadRecords() {
+    const records = {};
+    try {
+        const saved = JSON.parse(localStorage.getItem(storageKey));
+        if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+            for (const key of Object.keys(levels)) {
+                const score = saved[key];
+                if (Number.isInteger(score) && score >= 1 && score <= levels[key].attempts) {
+                    records[key] = score;
+                }
+            }
+        }
+    } catch {
+        // Invalid or blocked storage must never stop a round.
+        storageAvailable = false;
+    }
+    return records;
+}
+
+const records = loadRecords();
+
+function updateRecord() {
+    const key = difficulty.value;
+    if (records[key] === undefined || guesses.length < records[key]) {
+        records[key] = guesses.length;
+        try {
+            localStorage.setItem(storageKey, JSON.stringify(records));
+        } catch {
+            storageAvailable = false;
+        }
+    }
+}
+
 const minimum = 1;
 let maximum;
 let maximumAttempts;
@@ -23,6 +61,13 @@ let guesses;
 let gameOver;
 
 function updateDisplay() {
+    const key = difficulty.value;
+    const score = records[key];
+    bestScore.textContent = 'Best on ' + levels[key].label + ': ' +
+        (score === undefined ? 'no wins yet.' : score + (score === 1 ? ' guess.' : ' guesses.'));
+    storageNote.textContent = storageAvailable
+        ? 'Records are saved only in this browser.'
+        : 'Storage unavailable. Records last only for this visit.';
     chance.textContent = 'Attempts left: ' + attemptsLeft;
     history.textContent = guesses.length ? guesses.join(', ') : 'No guesses yet.';
     input.disabled = gameOver;
@@ -72,6 +117,7 @@ form.addEventListener('submit', (event) => {
 
     if (value === secretNumber) {
         gameOver = true;
+        updateRecord();
         hint.textContent = 'You win! The number was ' + secretNumber + '. Attempts used: ' + guesses.length + '.';
     } else if (attemptsLeft === 0) {
         gameOver = true;
