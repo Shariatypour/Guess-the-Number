@@ -1,6 +1,6 @@
 # Guess the Number
 
-A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find a secret whole number from **1 to 20** in **five attempts**, using higher/lower hints.
+A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find a secret whole number using higher/lower hints. Choose Easy (1–20, 5 attempts), Medium (1–50, 6 attempts), or Hard (1–100, 7 attempts).
 
 ## Live demo
 
@@ -12,12 +12,13 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
 
 ## Rules
 
-- Each round chooses a random integer from 1 to 20, including both endpoints.
+- Each round chooses a random integer within the selected level's range, including both endpoints.
+- Changing difficulty immediately starts a new round and clears guesses. New game keeps the selected level.
 - Each valid, new guess uses one attempt.
 - Empty, fractional, out-of-range, and repeated guesses do not use attempts.
 - A wrong guess tells you whether to try a higher or lower number.
-- A correct guess wins, including on the fifth attempt.
-- Five incorrect guesses end the round and reveal the number.
+- A correct guess wins, including on the final attempt.
+- Using all attempts without a correct guess ends the round and reveal the number.
 - Input and submission are disabled after a win or loss.
 - **New game** resets the round and chooses a fresh random number. The same number may occur again by chance.
 
@@ -39,7 +40,8 @@ No dependencies, build step, API keys, or backend are needed.
 
 | Control | Action |
 | --- | --- |
-| Number input | Enter a whole number from 1 to 20 |
+| Difficulty | Select a level and start a fresh round |
+| Number input | Enter a whole number within the selected range |
 | Check number / Enter in the input | Submit a guess |
 | Tab / Shift + Tab | Navigate enabled controls |
 | Enter / Space on a focused button | Activate the button |
@@ -49,7 +51,9 @@ The input has a visible label, invalid values receive `aria-invalid`, and feedba
 
 ## How it works
 
-The game stores four pieces of state:
+The `levels` object defines each level's range and attempt limit. `newGame()` reads the selected level and updates the rules, input limit, and round state. Changing levels keeps focus on the selector for keyboard navigation.
+
+The game stores four pieces of round state:
 
 - `secretNumber`: the number to find.
 - `attemptsLeft`: the remaining guesses.

@@ -6,9 +6,16 @@ const chance = document.querySelector('#chance');
 const hint = document.querySelector('#hint');
 const history = document.querySelector('#guess');
 
+const difficulty = document.querySelector('#difficulty');
+const rules = document.querySelector('#rules');
+const levels = {
+    easy: { label: 'Easy', maximum: 20, attempts: 5 },
+    medium: { label: 'Medium', maximum: 50, attempts: 6 },
+    hard: { label: 'Hard', maximum: 100, attempts: 7 }
+};
 const minimum = 1;
-const maximum = 20;
-const maximumAttempts = 5;
+let maximum;
+let maximumAttempts;
 
 let secretNumber;
 let attemptsLeft;
@@ -23,13 +30,18 @@ function updateDisplay() {
 }
 
 function newGame(moveFocus = true) {
+    const level = levels[difficulty.value];
+    maximum = level.maximum;
+    maximumAttempts = level.attempts;
+    input.max = String(maximum);
+    rules.textContent = 'Find a whole number from 1 to ' + maximum + '. You have ' + maximumAttempts + ' attempts.';
     secretNumber = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     attemptsLeft = maximumAttempts;
     guesses = [];
     gameOver = false;
     input.value = '';
     input.removeAttribute('aria-invalid');
-    hint.textContent = 'Ready when you are. Make your first guess!';
+    hint.textContent = level.label + ' round ready. Make your first guess!';
     updateDisplay();
     if (moveFocus) input.focus();
 }
@@ -42,7 +54,7 @@ form.addEventListener('submit', (event) => {
     const value = Number(rawValue);
     if (rawValue === '' || !Number.isInteger(value) || value < minimum || value > maximum) {
         input.setAttribute('aria-invalid', 'true');
-        hint.textContent = 'Enter a whole number from 1 to 20. No attempt was used.';
+        hint.textContent = 'Enter a whole number from 1 to ' + maximum + '. No attempt was used.';
         input.focus();
         return;
     }
@@ -77,4 +89,5 @@ form.addEventListener('submit', (event) => {
 });
 
 resetButton.addEventListener('click', () => newGame());
+difficulty.addEventListener('change', () => newGame(false));
 newGame(false);
