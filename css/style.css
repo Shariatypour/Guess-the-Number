@@ -1,0 +1,43 @@
+:root {
+    font-family: system-ui, sans-serif;
+    color: #17233b;
+    background: #eef5f3;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+.game {
+    width: min(100%, 560px);
+    padding: clamp(24px, 5vw, 40px);
+    border: 1px solid #d9e6e1;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 20px 60px #123b2d0a;
+}
+.eyebrow { color: #14634b; font-size: .7rem; font-weight: 750; letter-spacing: .1em; }
+h1 { font-size: clamp(1.75rem, 6vw, 2.4rem); line-height: 1.2; }
+p { line-height: 1.6; }
+.chances { font-weight: 700; color: #14634b; }
+label { display: block; margin-bottom: 8px; font-weight: 600; }
+.input-row { display: flex; gap: 10px; }
+input, button { min-height: 48px; border-radius: 10px; font: inherit; }
+input { width: 100%; min-width: 0; padding: 10px; border: 1px solid #a9bcb4; }
+button { padding: 10px 16px; border: 1px solid transparent; background: #14634b; color: #fff; font-weight: 600; cursor: pointer; }
+.input-row button { flex-shrink: 0; }
+button:disabled, input:disabled { background: #edf1ef; color: #5a6c63; cursor: default; }
+.secondary { background: #fff; color: #14634b; border-color: #a9bcb4; }
+input:focus-visible, button:focus-visible { outline: 3px solid #174a9c; outline-offset: 3px; }
+input[aria-invalid="true"] { border-color: #b42318; }
+#hint { min-height: 3.2em; }
+h2 { font-size: 1rem; margin-top: 24px; }
+#guess { color: #52635b; overflow-wrap: anywhere; }
+@media (max-width: 380px) {
+    body { padding: 12px; }
+    .input-row { flex-direction: column; }
+}

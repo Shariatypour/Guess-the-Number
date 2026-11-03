@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guess a secret number from 1 to 20 in five attempts.">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Guess the Number</title>
 </head>
 <body>
-    
-    <h1>NUMBER GAME</h1>
-    <input type="number" name="" id="num">
-    <button id="sub-btn">Check number</button>
-    <button id="reset-btn">reset</button>
-    <br>
-    <h2 id="chance"></h2>
-    <p id="hint"></p>
-    <p id="guess"></p>
+    <main class="game">
+        <p class="eyebrow">A SMALL GAME OF LOGIC & LUCK</p>
+        <h1>Guess the number.</h1>
+        <p id="rules">Find a whole number from 1 to 20. You have 5 attempts.</p>
+        <p class="chances" id="chance">Attempts left: 5</p>
+
+        <form id="guess-form" novalidate>
+            <label for="num">Your guess</label>
+            <div class="input-row">
+                <input type="number" id="num" min="1" max="20" step="1" inputmode="numeric" required aria-describedby="rules hint" autocomplete="off">
+                <button id="sub-btn" type="submit">Check number</button>
+            </div>
+        </form>
+
+        <p id="hint" role="status" aria-atomic="true">Ready when you are. Make your first guess!</p>
+        <section aria-labelledby="history-title">
+            <h2 id="history-title">Your guesses</h2>
+            <p id="guess">No guesses yet.</p>
+        </section>
+        <button class="secondary" id="reset-btn" type="button">New game</button>
+    </main>
     <script src="js/script.js"></script>
 </body>
 </html>
