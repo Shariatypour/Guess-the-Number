@@ -22,8 +22,8 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
 1. Download the repository through **Code → Download ZIP** and extract it, or clone it:
 
    ```sh
-   git clone https://github.com/Shariatypour/CLASS9-1.git
-   cd CLASS9-1
+   git clone https://github.com/Shariatypour/Guess-the-Number.git
+   cd Guess-the-Number
    ```
 
 2. Open `index.html` in your browser. Keep the `css` and `js` folders beside it.
@@ -65,7 +65,7 @@ All game state exists in the browser. Refreshing the page starts a new round; no
 ## Project structure
 
 ```text
-CLASS9-1/
+Guess-the-Number/
 ├── index.html       # Rules, labeled form, feedback, and history
 ├── css/style.css    # Responsive layout and focus styles
 ├── js/script.js     # Random number, validation, outcomes, and reset
@@ -82,4 +82,4 @@ A screen-reader speech audit and a complete browser/device compatibility audit h
 
 ## Project status
 
-See [pull request #1](https://github.com/Shariatypour/CLASS9-1/pull/1) for the implementation and validation history. A public live demo has not been published.
+See [pull request #1](https://github.com/Shariatypour/Guess-the-Number/pull/1) for the implementation and validation history. A public live demo has not been published.
