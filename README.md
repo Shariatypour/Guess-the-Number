@@ -2,6 +2,10 @@
 
 A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find a secret whole number from **1 to 20** in **five attempts**, using higher/lower hints.
 
+## Live demo
+
+[Play Guess the Number](https://shariatypour.github.io/Guess-the-Number/)
+
 ## Preview
 
 ![Guess the Number on a narrow screen, with five attempts, a labeled input, guess history, and a New game button](docs/preview.png)
@@ -82,4 +86,4 @@ A screen-reader speech audit and a complete browser/device compatibility audit h
 
 ## Project status
 
-See [pull request #1](https://github.com/Shariatypour/Guess-the-Number/pull/1) for the implementation and validation history. A public live demo has not been published.
+See [pull request #1](https://github.com/Shariatypour/Guess-the-Number/pull/1) for the implementation and validation history. The live demo is hosted on GitHub Pages.
