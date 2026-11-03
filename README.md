@@ -26,9 +26,8 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
    cd CLASS9-1
    ```
 
-2. While these improvements are under review, select the `fix/number-game` branch before downloading, or run `git switch fix/number-game` after cloning.
-3. Open `index.html` in your browser. Keep the `css` and `js` folders beside it.
-4. Optionally, serve the folder with VS Code's Live Server extension.
+2. Open `index.html` in your browser. Keep the `css` and `js` folders beside it.
+3. Optionally, serve the folder with VS Code's Live Server extension.
 
 No dependencies, build step, API keys, or backend are needed.
 
@@ -83,4 +82,4 @@ A screen-reader speech audit and a complete browser/device compatibility audit h
 
 ## Project status
 
-The implementation is being reviewed in [pull request #1](https://github.com/Shariatypour/CLASS9-1/pull/1). A public live demo has not been published.
+See [pull request #1](https://github.com/Shariatypour/CLASS9-1/pull/1) for the implementation and validation history. A public live demo has not been published.
