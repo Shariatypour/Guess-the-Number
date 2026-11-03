@@ -8,7 +8,7 @@ A small number-guessing game built with HTML, CSS, and vanilla JavaScript. Find 
 
 ## Preview
 
-![Guess the Number on a narrow screen, with five attempts, a labeled input, guess history, and a New game button](docs/preview.png)
+![Guess the Number v1.2 with a difficulty selector, saved personal best, remaining attempts, and labeled guess controls](docs/preview.png)
 
 ## Rules
 
